@@ -11,9 +11,11 @@ function getPreview(urlObj, callback) {
     .then((response) => {
         var html = response.data;
         var doc = cheerio.load(html);
-
         callback(null, parseResponse(html, url));
-  });
+	})
+	.catch((error) => {
+    console.log('Error fetch url', url, error.message);
+	});
 }
 
 
