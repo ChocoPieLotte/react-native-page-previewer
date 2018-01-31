@@ -96,32 +96,32 @@ function getImages(doc, pageUrl) {
     });
   }
 
-  if(images.length <= 0) {
-    src = doc("link[rel=image_src]").attr("href");
-    if(src) {
-            src = urlObj.resolve(pageUrl, src);
-            images = [ src ];
-    } else {
-      nodes = doc("img");
+  // if(images.length <= 0) {
+  //   src = doc("link[rel=image_src]").attr("href");
+  //   if(src) {
+  //           src = urlObj.resolve(pageUrl, src);
+  //           images = [ src ];
+  //   } else {
+  //     nodes = doc("img");
 
-      if(nodes.length) {
-        dic = {};
-        images = [];
-        nodes.each(function(index, node) {
-          src = node.attribs["src"];
-          if(src && !dic[src]) {
-            dic[src] = 1;
-            width = node.attribs["width"] || minImageSize;
-            height = node.attribs["height"] || minImageSize;
-            src = urlObj.resolve(pageUrl, src);
-            if(width >= minImageSize && height >= minImageSize) {
-              images.push(src);
-            }
-          }
-        });
-      }
-    }
-  }
+  //     if(nodes.length) {
+  //       dic = {};
+  //       images = [];
+  //       nodes.each(function(index, node) {
+  //         src = node.attribs["src"];
+  //         if(src && !dic[src]) {
+  //           dic[src] = 1;
+  //           width = node.attribs["width"] || minImageSize;
+  //           height = node.attribs["height"] || minImageSize;
+  //           src = urlObj.resolve(pageUrl, src);
+  //           if(width >= minImageSize && height >= minImageSize) {
+  //             images.push(src);
+  //           }
+  //         }
+  //       });
+  //     }
+  //   }
+  // }
   return images;
 }
 
